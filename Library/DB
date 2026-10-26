@@ -1,0 +1,28 @@
+
+CREATE DATABASE HospitalDB;
+USE HospitalDB;
+
+CREATE TABLE Patient (
+    Patient_ID INT PRIMARY KEY,
+    Patient_Name VARCHAR(100),
+    DOB DATE,
+    Phone VARCHAR(20),
+    Email VARCHAR(100)
+);
+
+CREATE TABLE Doctor (
+    Doctor_ID INT PRIMARY KEY,
+    Doctor_Name VARCHAR(100),
+    Specialization VARCHAR(100),
+    License_No VARCHAR(50)
+);
+
+CREATE TABLE Appointment (
+    Appointment_ID INT PRIMARY KEY,
+    Patient_ID INT,
+    Doctor_ID INT,
+    Appointment_DateTime DATETIME,
+    Status VARCHAR(20),
+    FOREIGN KEY (Patient_ID) REFERENCES Patient(Patient_ID),
+    FOREIGN KEY (Doctor_ID) REFERENCES Doctor(Doctor_ID)
+);
